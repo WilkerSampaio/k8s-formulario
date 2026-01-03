@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: html
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: html
+  template:
+    metadata:
+      labels:
+        app: html
+    spec:
+      containers:
+      - name: html
+        image: shockley09/frontend:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
