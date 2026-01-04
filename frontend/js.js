@@ -1,21 +1,25 @@
 $("#button-blue").on("click", function() {
-    
-    var txt_nome = $("#name").val();
-    var txt_email = $("#email").val();
-    var txt_comentario = $("#comment").val();
+    const txt_nome = $("#name").val();
+    const txt_email = $("#email").val();
+    const txt_comentario = $("#comment").val();
 
     $.ajax({
-        url: "",
-        
-        type: "post",
-        data: {nome: txt_nome, comentario: txt_comentario, email: txt_email},
+        url: "http://127.0.0.1:58363",
+        type: "POST",
+        data: {
+            nome: txt_nome,
+            email: txt_email,
+            comentario: txt_comentario
+        },
         beforeSend: function() {
-        
-            console.log("Tentando enviar os dados....");
-
+            console.log("Enviando dados...");
         }
-    }).done(function(e) {
-        alert("Dados Salvos");
     })
-
+    .done(function() {
+        alert("Dados salvos com sucesso 😈");
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+        console.error("Erro:", textStatus, errorThrown, jqXHR.responseText);
+        alert("Erro ao salvar");
+    });
 });
