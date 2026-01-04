@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: php-backend-deployment
+  name: backend-deployment
   labels:
     app: php
 spec:
